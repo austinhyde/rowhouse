@@ -1,5 +1,7 @@
 # Rowhouse - For when you just want to write SQL
 
+**UNDER ACTIVE DEVELOPMENT: NOT READY FOR USE**
+
 Rowhouse is a SQLAlchemy wrapper that attempts to strike a happy medium between using raw database bindings like
 psycopg2 and using the full SQLAlchemy API.
 
