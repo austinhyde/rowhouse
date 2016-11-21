@@ -49,3 +49,11 @@ with db.transaction():
     'role': 'first_mate'
   })
 ```
+
+
+## To Do
+
+- [ ] Implement find* methods
+- [ ] Implement insert/update/delete/upsert methods
+- [ ] More configurability - constructor, setters, etc
+- [ ] **Simple** model support - little more than classes with a Connection baked in and some convenience methods
