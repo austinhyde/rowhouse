@@ -40,9 +40,9 @@ db.commit()
 # Some convenient helpers
 with db.transaction():
   row = db.findone('users', username='mreynolds')
-  db.update('users', row['id'], {
+  db.update('users', {
     'role': 'captain'
-  })
+  }, id=row['id'])
   newrow = db.insert('users', {
     'fullname': 'Zoe Washburne',
     'username': 'zwashburne',
@@ -53,8 +53,8 @@ with db.transaction():
 
 ## To Do
 
-- [ ] Implement find* methods
-- [ ] Implement insert/update/delete/upsert methods
+- [x] Implement find* methods
+- [x] Implement insert/update/delete/upsert methods
 - [ ] More configurability - constructor, setters, etc
 - [ ] Add packaging and publish to pypi
 - [ ] Add tests and CI

@@ -52,3 +52,42 @@ class Connection:
     def transaction(self):
         with self._db.begin():
             yield
+
+    def findone(self, tablename, conditions={}, **kwargs):
+        conditions = dict(conditions, **kwargs)
+        table = _table(tablename, conditions.keys())
+        return self.fetchone(_where(sa.select([sa.text('*')]).select_from(table), conditions, table))
+
+    def findall(self, tablename, conditions={}, **kwargs):
+        conditions = dict(conditions, **kwargs)
+        table = _table(tablename, conditions.keys())
+        return self.fetchall(_where(sa.select([sa.text('*')]).select_from(table), conditions, table))
+
+    def finditer(self, tablename, conditions={}, **kwargs):
+        conditions = dict(conditions, **kwargs)
+        table = _table(tablename, conditions.keys())
+        return self.fetchiter(_where(sa.select([sa.text('*')]).select_from(table), conditions, table))
+
+    def insert(self, tablename, data):
+        return self.fetchone(_table(tablename, data.keys()).insert().values(data).returning(sa.text('*')))
+
+    def update(self, tablename, data, conditions={}, **kwargs):
+        conditions = dict(conditions, **kwargs)
+        cols = list(conditions.keys())
+        cols.extend(data.keys())
+        return self.fetchone(_where(_table(tablename, cols).update().values(data).returning(sa.text('*')), conditions))
+
+    def delete(self, tablename, conditions={}, **kwargs):
+        conditions = dict(conditions, **kwargs)
+        return self.fetchone(_where(_table(tablename, conditions.keys()).delete().returning(sa.text('*')), conditions))
+
+
+def _table(name, cols):
+    return sa.table(name, *[sa.column(c) for c in cols])
+
+def _where(whereable, conditions, table=None):
+    if table is None:
+        table = whereable.table
+    if len(conditions):
+        return whereable.where(sa.and_(*[getattr(table.c, k) == v for k, v in conditions.items()]))
+    return whereable
