@@ -39,15 +39,15 @@ db.commit()
 
 # Some convenient helpers
 with db.transaction():
-  row = db.findone('users', username='mreynolds')
-  db.update('users', {
-    'role': 'captain'
-  }, id=row['id'])
-  newrow = db.insert('users', {
-    'fullname': 'Zoe Washburne',
-    'username': 'zwashburne',
-    'role': 'first_mate'
-  })
+    row = db.findone('users', username='mreynolds')
+    db.update('users', {
+      'role': 'captain'
+    }, id=row['id'])
+    newrow = db.insert('users', {
+      'fullname': 'Zoe Washburne',
+      'username': 'zwashburne',
+      'role': 'first_mate'
+    })
 ```
 
 
