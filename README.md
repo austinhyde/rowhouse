@@ -41,12 +41,12 @@ db.commit()
 with db.transaction():
     row = db.findone('users', username='mreynolds')
     db.update('users', {
-      'role': 'captain'
+        'role': 'captain'
     }, id=row['id'])
     newrow = db.insert('users', {
-      'fullname': 'Zoe Washburne',
-      'username': 'zwashburne',
-      'role': 'first_mate'
+        'fullname': 'Zoe Washburne',
+        'username': 'zwashburne',
+        'role': 'first_mate'
     })
 ```
 
