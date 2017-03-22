@@ -19,7 +19,7 @@ class Connection:
         return dict(result.items())
 
     def execute(self, sql, *multiparams, **params):
-        self._execute(sql, *multiparams, **params)
+        return self._execute(sql, *multiparams, **params)
 
     def fetchone(self, sql, *multiparams, **params):
         return self._unwrap(self._execute(sql, *multiparams, **params).first())
