@@ -30,7 +30,7 @@ Basic Usage
 .. code-block:: python
 
     from rowhouse import Connection
-    db = Connnection('pgsql://localhost/mydatabase')
+    db = Connnection('postgresql://localhost/mydatabase')
 
     # Run some SQL
     row = db.fetchone('SELECT * FROM users WHERE username = %s', ('mreynolds',))
