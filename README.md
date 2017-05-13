@@ -55,7 +55,7 @@ with db.transaction():
 
 - [x] Implement find* methods
 - [x] Implement insert/update/delete/upsert methods
+- [x] Add tests and CI
 - [ ] More configurability - constructor, setters, etc
 - [ ] Add packaging and publish to pypi
-- [ ] Add tests and CI
 - [ ] **Simple** model support - little more than classes with a Connection baked in and some convenience methods
