@@ -1,6 +1,7 @@
 import sqlalchemy as sa
 from contextlib import contextmanager
 
+
 class Connection:
     def __init__(self, url):
         self._db = sa.create_engine(url).connect()
@@ -16,6 +17,8 @@ class Connection:
         return self._db.execute(sql, *multiparams, **params)
 
     def _unwrap(self, result):
+        if result is None:
+            return None
         return dict(result.items())
 
     def execute(self, sql, *multiparams, **params):
@@ -84,6 +87,7 @@ class Connection:
 
 def _table(name, cols):
     return sa.table(name, *[sa.column(c) for c in cols])
+
 
 def _where(whereable, conditions, table=None):
     if table is None:
