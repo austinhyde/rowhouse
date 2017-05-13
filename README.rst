@@ -68,7 +68,7 @@ To Do
 - [ ] **Simple** model support - little more than classes with a Connection baked in and some convenience methods
 
 
-.. |version| image:: https://img.shields.io/badge/version-1.0.2-blue.svg
+.. |version| image:: https://img.shields.io/badge/version-1.0.3-blue.svg
 
 .. |build| image:: https://img.shields.io/travis/austinhyde/rowhouse/master.svg
     :target: https://travis-ci.org/austinhyde/rowhouse
