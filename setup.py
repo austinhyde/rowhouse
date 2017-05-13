@@ -1,6 +1,6 @@
 from distutils.core import setup
 
-VERSION = '1.0.2'
+VERSION = '1.0.3'
 
 setup(
   name='rowhouse',
@@ -13,4 +13,5 @@ setup(
   download_url='https://github.com/austinhyde/rowhouse/archive/%s.tar.gz' % VERSION,
   keywords=['database', 'sql'],
   classifiers=['Topic :: Database'],
+  install_requires=['sqlalchemy~=1.1.4']
 )
